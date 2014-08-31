@@ -8,6 +8,7 @@ module.exports = (grunt)->
       root:"",
       inlineFile:null
       rev:false
+      host: ''
       reduceRev:(filename)-> filename.replace(/([^\.]+)\.(.+)/,"$2")
     )
     options.inlineLoad = options.inlineFile unless options.inlineLoad?
@@ -25,6 +26,10 @@ module.exports = (grunt)->
         memo
       ),data
     ),{}
+    if options.host.length > 0
+      newObj = {}
+      newObj[options.host] = data
+      data = newObj
 
     content = JSON.stringify data
 

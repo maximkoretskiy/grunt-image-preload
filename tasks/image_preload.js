@@ -8,12 +8,13 @@ _ = require("lodash");
 
 module.exports = function(grunt) {
   return grunt.registerMultiTask("image_preload", "Generate js file with list of image resourse", function() {
-    var content, data, fileData, options, processFiles, result, rx, rxClean, script;
+    var content, data, fileData, newObj, options, processFiles, result, rx, rxClean, script;
     options = this.options({
       jsvar: "PRELOADER",
       root: "",
       inlineFile: null,
-      rev: true,
+      rev: false,
+      host: '',
       reduceRev: function(filename) {
         return filename.replace(/([^\.]+)\.(.+)/, "$2");
       }
@@ -36,6 +37,11 @@ module.exports = function(grunt) {
         return memo;
       }), data);
     }), {});
+    if (options.host.length > 0) {
+      newObj = {};
+      newObj[options.host] = data;
+      data = newObj;
+    }
     content = JSON.stringify(data);
     fileData = fs.readFileSync("" + __dirname + "/../template/inject.min.js").toString();
     fileData = fileData.replace(/window\.PRELOADER[ ]*=/, "");

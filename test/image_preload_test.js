@@ -51,6 +51,11 @@ exports.image_preload = {
     var actualJS = grunt.file.read('tmp/inline4.js');
     test.ok(actualJS.indexOf("PRELOADER2") > 0);
     test.done();
+  },
+  custom_options_3:function(test){
+    var actualJS = grunt.file.read('tmp/inline5.js');
+    test.ok(actualJS.indexOf("{\"http://yandex.ru\":") > 0);
+    test.done();
   }
   
 };

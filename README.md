@@ -30,7 +30,8 @@ grunt.initConfig({
       root:"http://example.com/", //optional
       inlineFile:null,
       inlineLoad:null,
-      rev:false      
+      rev:false,
+      host: "http://<project-name>.<abstract-cdn-name>.com"
     },
     files:[{
       cwd: "test/fixtures/images", 
@@ -99,6 +100,11 @@ which reduce revision
 Type: `String`
 Default value: Function which reduce revision from file path
 while processin tree of files
+
+#### options.host
+Type: `String`
+Default value: ''
+Set custom assets loading host. Can be usefull, if you use cdn.
 
 ### Usage Examples
 

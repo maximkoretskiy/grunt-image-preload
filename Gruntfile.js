@@ -79,6 +79,17 @@ module.exports = function(grunt) {
           src: "**/*.{jpg,jpeg,png,gif}"
         }],
       },
+      custom_options_3:{
+        options: {
+          root:"../test/fixtures/images/",
+          inlineFile:"tmp/inline5.js",
+          host: "http://yandex.ru"
+        },
+        files:[{
+          cwd: "test/fixtures/images", 
+          src: "**/*.{jpg,jpeg,png,gif}"
+        }],
+      },
     },    
     coffee:{
       dist:{
